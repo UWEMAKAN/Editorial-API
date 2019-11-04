@@ -1,0 +1,6 @@
+{
+  "name": "Node API example",
+  "description": "A simple API built in Node and Express hosted on Heroku",
+  "repository": "https://github.com/UWEMAKAN/JavaScript-Api-Starter-Kit",
+  "keywords": ["node", "express", "static"]
+}

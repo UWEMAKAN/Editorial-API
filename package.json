@@ -1,0 +1,27 @@
+{
+  "name": "editorial-api",
+  "version": "1.0.0",
+  "description": "API for the Editorial Web App",
+  "main": "app.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UWEMAKAN/Editorial-API.git"
+  },
+  "author": "Uwem Akan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/UWEMAKAN/Editorial-API/issues"
+  },
+  "homepage": "https://github.com/UWEMAKAN/Editorial-API#readme",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "debug": "^4.1.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}
