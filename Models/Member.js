@@ -1,17 +1,6 @@
 class Member {
-  constructor(firstname, lastname, stateCode) {
-    this.firstname = firstname;
-    this.lastname = lastname;
-    this.stateCode = stateCode;
-    this.ppa = '';
-    this.emailAddress = '';
-    this.phoneNumber = '';
-    this.lga = '';
-    this.stateOfOrigin = '';
-    this.birthday = '';
-    this.batch = '';
-    this.stream = '';
-    this.office = '';
+  get isAdmin() {
+    return this.isAdmin;
   }
 
   get contactInfo() {
@@ -86,6 +75,10 @@ class Member {
 
   set office(office) {
     this.office = office;
+  }
+
+  set isAdmin(isAdmin) {
+    this.isAdmin = isAdmin;
   }
 }
 

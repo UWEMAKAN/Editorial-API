@@ -2,44 +2,43 @@ const express = require('express');
 const debug = require('debug')('app');
 const chalk = require('chalk');
 const http = require('http');
+const morgan = require('morgan');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const app = express();
+if (process.env.ENV === 'Test') {
+  debug('Connecting to test db');
+  // eslint-disable-next-line no-unused-vars
+  const db = mongoose.connect('mongodb://localhost/EditorialApp-Test',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+} else {
+  debug('Connecting to dev db');
+  // eslint-disable-next-line no-unused-vars
+  const db = mongoose.connect('mongodb://localhost:/EditorialApp',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+}
+
 const server = http.createServer(app);
+app.use(morgan('tiny'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+const User = require('./mongooseModels/userModel');
+const memberRouter = require('./Routes/memberRoutes')(User);
+const authRouter = require('./Routes/authRoutes')(User);
 
-// RESTful ROUTES
-app.get('/', (req, res) => {
-  res.send('Home Page');
-});
+app.use('/api', memberRouter);
+app.use('/auth', authRouter);
 
-app.get('/members', (req, res) => {
-  res.send('Members Pages');
-});
-
-app.get('/members/:id', (req, res) => {
-  res.send('Singe member');
-});
-
-app.get('/members/new', (req, res) => {
-  res.send('New member form');
-});
-
-app.post('/members/new', (req, res) => {
-  res.redirect('/members/:id');
-});
-
-app.delete('/members/:id/delete', (req, res) => {
-  res.redirect('/members');
-});
-
-app.get('/members/:id/update', (req, res) => {
-  res.send('Update Member info');
-});
-
-app.put('/members/:id/update', (req, res) => {
-  res.redirect('/members/:id');
-});
-
-server.listen(port, () => {
+app.server = server.listen(port, () => {
   debug(chalk.green(`Server listening on port ${port}`));
 });
+
+module.exports = app;
