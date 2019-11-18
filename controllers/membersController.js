@@ -1,15 +1,20 @@
 const debug = require('debug')('app:membersController');
 
 function booksController(User) {
-  function post(req, res) {
+  function post(req, res) { // eslint-disable-line consistent-return
     const user = new User(req.body);
+    debug(user);
     if (!req.body.password) {
       res.status(400);
       return res.send('Password is required');
     }
-    user.save();
-    res.status(201);
-    return res.json(user);
+    user.save((err) => {
+      if (err) {
+        debug(err.stack);
+      }
+      return res.json(user);
+      // return res.status(201);
+    });
   }
 
   function get(req, res) {

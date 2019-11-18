@@ -75,22 +75,6 @@ function router(User) {
         return res.sendStatus(204);
       });
     });
-
-  // memberRouter.route('/members/:memberId/register')
-  //   .get((req, res) => {
-  //     User.findById(req.params.memberId, (err, user) => {
-  //       if (err) {
-  //         debug(err.stack);
-  //         return res.sendStatus(404);
-  //       }
-  //       // use data from this route to populate
-  //       // the registration form after user verification
-  //       return res.json(user);
-  //     });
-  //   })
-  //   .post((req, res) => {
-
-  //   });
   return memberRouter;
 }
 

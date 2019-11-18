@@ -6,25 +6,31 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 const app = express();
-if (process.env.ENV === 'Test') {
-  debug('Connecting to test db');
-  // eslint-disable-next-line no-unused-vars
-  const db = mongoose.connect('mongodb://localhost/EditorialApp-Test',
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    });
-} else {
-  debug('Connecting to dev db');
-  // eslint-disable-next-line no-unused-vars
-  const db = mongoose.connect('mongodb://localhost:/EditorialApp',
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    });
-}
+// if (process.env.ENV === 'Test') {
+//   debug('Connecting to test db');
+//   // eslint-disable-next-line no-unused-vars
+//   const db = mongoose.connect('mongodb://localhost/EditorialApp-Test',
+//     {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true
+//     });
+// } else {
+//   debug('Connecting to dev db');
+//   // eslint-disable-next-line no-unused-vars
+//   const db = mongoose.connect('mongodb://localhost:/EditorialApp',
+//     {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true
+//     });
+// }
+// eslint-disable-next-line no-unused-vars
+const db = mongoose.connect('mongodb://localhost:/EditorialApp',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
 
 const server = http.createServer(app);
 app.use(morgan('tiny'));

@@ -15,17 +15,17 @@ const userModel = new Schema(
     phoneNumber: { type: String },
     lga: { type: String },
     stateOfOrigin: { type: String },
-    birthday: { type: String },
+    birthDay: { type: String },
     batch: { type: String },
     stream: { type: String },
     office: { type: String },
-    isAdmin: { type: Boolean },
-    regFeeIsPaid: { type: Boolean },
+    isAdmin: { type: Boolean, default: false },
+    regFeeIsPaid: { type: Boolean, default: false },
     regFeeAmount: { type: Number, default: 1000 },
-    duesIsPaid: { type: Boolean },
+    duesIsPaid: { type: Boolean, default: false },
     duesAmount: { type: Number, default: 2850 },
-    duesPaid: { type: Number },
-    duesBal: { type: Number }
+    duesPaid: { type: Number, default: 0 },
+    duesBal: { type: Number, default: 2850 }
   }
 );
 

@@ -6,7 +6,7 @@ const authRouter = express.Router();
 function router(User) {
   authRouter.route('/signUp')
     .get((req, res) => {
-      res.('/members');
+      res.send('/members');
     });
 
   return authRouter;
