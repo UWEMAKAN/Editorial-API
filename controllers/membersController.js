@@ -13,7 +13,6 @@ function booksController(User) {
         debug(err.stack);
       }
       return res.json(user);
-      // return res.status(201);
     });
   }
 
